@@ -1,5 +1,5 @@
 import sqlite3
-conn=sqlite3.connect('sensorsData.db')
+conn=sqlite3.connect('/home/jcramirez/sensors/sensorsData.db')
 curs=conn.cursor()
 
 maxTemp = 27.6
