@@ -24,7 +24,7 @@ def index():
 		'temp': temp,
 		'hum': hum
 	}
-	return render_template('index.html', **templateData)
+	return render_template('index_gage.html', **templateData)
 
 if __name__ == "__main__":
    app.run(host='0.0.0.0', port=80, debug=False)
