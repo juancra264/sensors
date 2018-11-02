@@ -15,8 +15,8 @@ from datetime import datetime
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 import io
-
-from flask import Flask, render_template, send_file, make_response, request
+import os
+from flask import Flask, render_template, send_file, make_response, request, send_from_directory
 app = Flask(__name__)
 
 import sqlite3
@@ -160,6 +160,13 @@ def plot_hum():
 	response = make_response(output.getvalue())
 	response.mimetype = 'image/png'
 	return response
-	
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
+
 if __name__ == "__main__":
    app.run(host='0.0.0.0', port=80, debug=False)
